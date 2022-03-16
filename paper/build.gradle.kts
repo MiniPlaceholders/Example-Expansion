@@ -12,8 +12,8 @@ val pluginVersion = version
 bukkit {
     main = "me.dreamerzero.example.paper.PaperPlugin"
     apiVersion = "1.18"
-    website = "https://github.com/4drian3d/MiniPlaceholders"
     authors = listOf("4drian3d")
+    depend = listOf("MiniPlaceholders")
     version = pluginVersion as String
 }
 
