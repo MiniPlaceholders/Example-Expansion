@@ -36,10 +36,10 @@ public final class VelocityPlugin {
     @Subscribe
     public void onProxyInitialize(ProxyInitializeEvent event) {
         logger.info("Starting Example Expansion for Velocity");
-		
+
         Expansion.builder("example")
             .filter(Player.class)
-            .audiencePlaceholder("name", (aud,queue, ctx) -> Tag.selfClosingInserting(Component.text(((Player)aud).getUsername())))
+            .audiencePlaceholder("name", (aud, queue, ctx) -> Tag.selfClosingInserting(Component.text(((Player)aud).getUsername())))
             .build()
             .register();
     }
