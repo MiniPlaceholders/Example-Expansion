@@ -25,7 +25,7 @@ subprojects {
     }
 
     dependencies {
-        compileOnly("com.github.4drian3d:MiniPlaceholders:1.0.0")
+        compileOnly("com.github.4drian3d:MiniPlaceholders:1.3.1")
     }
 }
 
