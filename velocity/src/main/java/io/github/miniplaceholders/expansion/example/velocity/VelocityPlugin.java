@@ -1,4 +1,4 @@
-package me.dreamerzero.example.velocity;
+package io.github.miniplaceholders.expansion.example.velocity;
 
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
@@ -9,21 +9,18 @@ import com.velocitypowered.api.proxy.Player;
 
 import org.slf4j.Logger;
 
-import me.dreamerzero.miniplaceholders.api.Expansion;
+import io.github.miniplaceholders.api.Expansion;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.Tag;
 
 @Plugin(
     name = "Example-Expansion",
-    id = "exampleexpansion",
-    version = "1.0.0",
+    id = "example-expansion",
+    version = Constants.VERSION,
     authors = {"4drian3d"},
     dependencies = {
-        @Dependency(
-            id = "miniplaceholders",
-            optional = false)
-        }
+        @Dependency(id = "miniplaceholders")}
 )
 public final class VelocityPlugin {
     private final Logger logger;

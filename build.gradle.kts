@@ -1,39 +1,31 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 plugins {
     java
-    id("com.github.johnrengelman.shadow") version "8.1.0"
-}
-
-allprojects {
-    apply(plugin = "java")
-    group = "me.dreamerzero.example"
-    version = "1.0.0"
-    description = "Template-Expansion"
+    alias(libs.plugins.shadow)
 }
 
 dependencies {
-    shadow(project(":example-velocity"))
-    shadow(project(":example-paper"))
+    implementation(project(":example-expansion-velocity"))
+    implementation(project(":example-expansion-paper"))
 }
 
 subprojects {
+    apply<JavaPlugin>()
     repositories {
-        mavenCentral()
-        maven("https://jitpack.io")
         maven("https://papermc.io/repo/repository/maven-public/")
     }
-
-    dependencies {
-        compileOnly("com.github.4drian3d:MiniPlaceholders:1.3.1")
+    java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    tasks {
+        compileJava {
+            options.encoding = Charsets.UTF_8.name()
+            options.release.set(17)
+        }
     }
 }
 
 tasks {
     shadowJar {
-        archiveFileName.set("Example-Expansion.jar")
+        archiveFileName.set("${rootProject.name}-${project.version}.jar")
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-        configurations = listOf(project.configurations.shadow.get())
     }
     build {
         dependsOn(shadowJar)
