@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.pluginyml)
-    alias(libs.plugins.runpaper)
 }
 
 dependencies {
