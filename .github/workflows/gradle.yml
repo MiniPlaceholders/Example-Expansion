@@ -25,6 +25,6 @@ jobs:
     - name: Build with Gradle
       uses: nick-invision/retry@v2
       with:
-        timeout_minutes: 4
+        timeout_minutes: 5
         max_attempts: 2
         command: gradle build
