@@ -36,6 +36,7 @@ sponge {
         dependency("miniplaceholders") {
             loadOrder(PluginDependency.LoadOrder.AFTER)
             optional(false)
+            version("2.2.0")
         }
     }
 }
