@@ -25,7 +25,7 @@ subprojects {
 
 tasks {
     shadowJar {
-        archiveFileName.set("${rootProject.name}-${project.version}.jar")
+        archiveFileName.set("MiniPlaceholders-${rootProject.name}-${project.version}.jar")
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     }
     build {

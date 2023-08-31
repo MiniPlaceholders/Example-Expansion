@@ -17,8 +17,8 @@ sponge {
         name(PluginLoaders.JAVA_PLAIN)
         version("1.0")
     }
-    plugin("example-expansion") {
-        displayName("Example-Expansion")
+    plugin("miniplaceholders-example-expansion") {
+        displayName("MiniPlaceholders-Example-Expansion")
         entrypoint("io.github.miniplaceholders.expansion.example.sponge.SpongePlugin")
         description(project.description)
         links {
@@ -37,6 +37,11 @@ sponge {
             loadOrder(PluginDependency.LoadOrder.AFTER)
             optional(false)
             version("2.2.0")
+        }
+        dependency("some_plugin") {
+            loadOrder(PluginDependency.LoadOrder.AFTER)
+            optional(false)
+            version("1.0.0")
         }
     }
 }
