@@ -1,4 +1,5 @@
 plugins {
+    alias(libs.plugins.idea.ext)
     alias(libs.plugins.blossom)
 }
 
@@ -9,7 +10,12 @@ dependencies {
     implementation(projects.exampleExpansionCommon)
 }
 
-blossom {
-    replaceTokenIn("src/main/java/io/github/miniplaceholders/expansion/example/velocity/Constants.java")
-    replaceToken("{version}", project.version)
+sourceSets {
+    main {
+        blossom {
+            javaSources {
+                property("version", project.version.toString())
+            }
+        }
+    }
 }
