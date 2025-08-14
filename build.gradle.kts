@@ -1,31 +1,30 @@
 plugins {
     java
-    alias(libs.plugins.shadow)
+    alias(libs.plugins.idea.ext)
+    alias(libs.plugins.blossom)
 }
 
 dependencies {
-    implementation(projects.exampleExpansionVelocity)
-    implementation(projects.exampleExpansionPaper)
-    implementation(projects.exampleExpansionSponge)
+    compileOnly(libs.miniplaceholders)
+    //compileOnly(libs.spark) Some library
+    compileOnly(libs.adventure.api)
+    compileOnly(libs.adventure.minimessage)
 }
 
-subprojects {
-    apply<JavaPlugin>()
-    java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
-    tasks {
-        compileJava {
-            options.encoding = Charsets.UTF_8.name()
-            options.release.set(17)
-        }
-    }
-}
-
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 tasks {
-    shadowJar {
-        archiveFileName.set("MiniPlaceholders-${rootProject.name}-${project.version}.jar")
-        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    compileJava {
+        options.encoding = Charsets.UTF_8.name()
+        options.release.set(21)
     }
-    build {
-        dependsOn(shadowJar)
+}
+
+sourceSets {
+    main {
+        blossom {
+            javaSources {
+                property("version", project.version.toString())
+            }
+        }
     }
 }
