@@ -1,31 +1,12 @@
-@file:Suppress("UnstableApiUsage")
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "MiniPlaceholders-Example-Expansion"
-
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        maven("https://maven.fabricmc.net/")
-    }
-}
+rootProject.name = "Example-Expansion"
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        maven("https://papermc.io/repo/repository/maven-public/")
+        maven("https://repo.papermc.io/repository/maven-public/")
+        maven("https://central.sonatype.com/repository/maven-snapshots/")
     }
 }
 
 plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.7.0"
-    id("fabric-loom") version "1.4.5"
-    id("org.spongepowered.gradle.plugin") version "2.2.0"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
-
-arrayOf("common", "paper", "velocity", "sponge", "fabric").forEach {
-    include("example-expansion-$it")
-
-    project(":example-expansion-$it").projectDir = file(it)
-}
-
